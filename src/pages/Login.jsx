@@ -37,6 +37,7 @@
 //   const bio = useInputValidation("");
 //   const username = useInputValidation("", usernameValidator);
 //   const password = useInputValidation("");
+//   const phoneNumber = useInputValidation(""); // Added phone number validation
 
 //   const avatar = useFileHandler("single");
 
@@ -89,6 +90,7 @@
 //     formData.append("bio", bio.value);
 //     formData.append("username", username.value);
 //     formData.append("password", password.value);
+//     formData.append("phoneNumber", phoneNumber.value); // Added phone number
 
 //     const config = {
 //       withCredentials: true,
@@ -314,6 +316,15 @@
 //                   value={password.value}
 //                   onChange={password.changeHandler}
 //                 />
+//                 <TextField
+//                   required
+//                   fullWidth
+//                   label="Phone Number"
+//                   margin="normal"
+//                   variant="outlined"
+//                   value={phoneNumber.value}
+//                   onChange={phoneNumber.changeHandler}
+//                 />
 //                 <Button
 //                   sx={{
 //                     marginTop: "1.5rem",
@@ -384,6 +395,7 @@ import { VisuallyHiddenInput } from "../components/styles/StyledComponents";
 import { server } from "../constants/config";
 import { userExists } from "../redux/reducers/auth";
 import { usernameValidator } from "../utils/validators";
+import { useNavigate } from "react-router-dom";  // Importing useNavigate
 
 // Import the logo image
 import logo from "../assets/logo.png"; // Adjust path to the logo file location
@@ -392,6 +404,8 @@ import loginImage from "../assets/login.jpg"; // Adjust path to the login image 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();  // Initialize useNavigate
 
   const toggleLogin = () => setIsLogin((prev) => !prev);
 
@@ -577,7 +591,9 @@ const Login = () => {
                     color: "#1976d2",
                     fontWeight: 600,
                     marginTop: 2,
+                    cursor: "pointer",
                   }}
+                  onClick={() => navigate("/forgot-password")} // Navigate to ForgotPassword page
                 >
                   Forgot Password?
                 </Link>
@@ -733,3 +749,4 @@ const Login = () => {
 };
 
 export default Login;
+
