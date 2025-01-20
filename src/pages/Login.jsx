@@ -598,7 +598,7 @@ const Login = () => {
                       fontWeight: 600,
                       cursor: "pointer",
                     }}
-                    onClick={() => navigate("/forgot-password")}
+                    onClick={() => navigate("/forgot_password")}
                   >
                     Forgot Password?
                   </Link>

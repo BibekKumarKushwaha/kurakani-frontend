@@ -159,6 +159,23 @@ const api = createApi({
       }),
       invalidatesTags: ["Chat"],
     }),
+    forgotPassword: builder.mutation({
+      query: (data) => ({
+        url: "user/forgot_password",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // Verify OTP and Set New Password
+    verifyOtp: builder.mutation({
+      query: (data) => ({
+        url: "user/verify_otp",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
   }),
 });
 
@@ -180,4 +197,6 @@ export const {
   useAddGroupMembersMutation,
   useDeleteChatMutation,
   useLeaveGroupMutation,
+  useForgotPasswordMutation,
+  useVerifyOtpMutation,
 } = api;
